@@ -6,16 +6,12 @@ const rec = (x, y, i, obj) => {
         obj.lineTo(x + 50, y)
         obj.moveTo(x, y)
         obj.lineTo(x, y + 50)
-        rec(x + 50, y, i-1, ctx)
-        rec(x, y + 50, i-1, ctx)
+        // rec(x + 50, y, i-1, ctx)
+        // rec(x, y + 50, i-1, ctx)
 }
-
-console.log(138%6)
 const canvasObject = document.getElementById('TestCanvas')
 const okButton = document.getElementById('okButton')
 const input = document.getElementById('inputValue')
-
-console.log(okButton)
 
 canvasObject.width = document.documentElement.scrollWidth
 canvasObject.height = document.documentElement.clientHeight - 200
@@ -30,6 +26,7 @@ const coordinate = {
 }
 
 canvasObject.addEventListener('mousedown', (e) => {
+    console.log(e.pageX, e.pageY)
     coordinate.x = e.pageX
     coordinate.y = e.pageY
     mouseStatus = true
@@ -41,18 +38,26 @@ canvasObject.addEventListener('mouseout', (e) => {
     mouseStatus = false
 })
 
+const startCoordinateTree = {
+    x: canvasObject.width/2,
+    y: canvasObject.height
+}
+
+
 okButton.addEventListener('click', (e)=>{
-    console.dir(+input.value)
-    for (let i = 0; i<=+input.value; i++) {
-        ctx.moveTo(i*50,i*50)
-        ctx.lineTo((i+1)*50, (i+1)*50)
-        rec(i*50, i*50, i, ctx)
-            // ctx.moveTo(i*50, i*50)
-            // ctx.lineTo((i+ 1)  *50, i*50)
-            // ctx.moveTo(i*50, i*50)
-            // ctx.lineTo(i*50, (i+1)*50)
-    }
-    ctx.strokeStyle = 'grey'
+    ctx.moveTo(startCoordinateTree.x, startCoordinateTree.y)
+    ctx.lineTo(startCoordinateTree.x, startCoordinateTree.y - 100)
+    // rec()
+    // for (let i = 0; i<=+input.value; i++) {
+    //     ctx.moveTo(i*50,i*50)
+    //     ctx.lineTo((i+1)*50, (i+1)*50)
+    //     rec(i*50, i*50, i, ctx)
+    //         // ctx.moveTo(i*50, i*50)
+    //         // ctx.lineTo((i+ 1)  *50, i*50)
+    //         // ctx.moveTo(i*50, i*50)
+    //         // ctx.lineTo(i*50, (i+1)*50)
+    // }
+    ctx.strokeStyle = 'blue'
     ctx.stroke()
 })
 
