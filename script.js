@@ -8,12 +8,21 @@ const rec = (x, y, i, obj) => {
     const randomY = Math.round(Math.random() * 100);
     const randomY2 = Math.round(Math.random() * 100);
 
-    obj.moveTo(x, y)
-    obj.lineTo(x +randomX, y- randomY)
-    obj.moveTo(x, y)
-    obj.lineTo(x-randomX2, y - randomY2)
-    rec(x +randomX, y- randomY, i-1, ctx)
-    rec(x - randomX2, y-randomY2, i-1, ctx)
+    if (randomX > 70) {
+        obj.moveTo(x, y)
+        obj.lineTo(x +randomX, y- randomY)
+        rec(x +randomX, y- randomY, i-1, ctx)
+    } else if (randomX < 20) {
+        obj.moveTo(x, y)
+        obj.lineTo(x +randomX, y- randomY)
+    } else {
+        obj.moveTo(x, y)
+        obj.lineTo(x +randomX, y- randomY)
+        obj.moveTo(x, y)
+        obj.lineTo(x-randomX2, y - randomY2)
+        rec(x +randomX, y- randomY, i-1, ctx)
+        rec(x - randomX2, y-randomY2, i-1, ctx)
+    }
 }
 const canvasObject = document.getElementById('TestCanvas')
 const okButton = document.getElementById('okButton')
