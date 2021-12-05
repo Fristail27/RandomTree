@@ -61,23 +61,7 @@ const startCoordinateTree = {
 okButton.addEventListener('click', (e)=>{
     ctx.moveTo(startCoordinateTree.x, startCoordinateTree.y)
     ctx.lineTo(startCoordinateTree.x, startCoordinateTree.y - 20)
-
     rec(startCoordinateTree.x, startCoordinateTree.y - 20, +input.value, ctx)
-
-    // ctx.moveTo(startCoordinateTree.x, startCoordinateTree.y - 20)
-    // ctx.lineTo(startCoordinateTree.x-50, startCoordinateTree.y - 200)
-    //
-    // ctx.moveTo(startCoordinateTree.x, startCoordinateTree.y - 20)
-    // ctx.lineTo(startCoordinateTree.x+50, startCoordinateTree.y - 200)
-    // for (let i = 0; i<=+input.value; i++) {
-    //     ctx.moveTo(i*50,i*50)
-    //     ctx.lineTo((i+1)*50, (i+1)*50)
-    //     // rec(i*50, i*50, i, ctx)
-    //         // ctx.moveTo(i*50, i*50)
-    //         // ctx.lineTo((i+ 1)  *50, i*50)
-    //         // ctx.moveTo(i*50, i*50)
-    //         // ctx.lineTo(i*50, (i+1)*50)
-    // }
     ctx.strokeStyle = 'blue'
     ctx.stroke()
 })
