@@ -2,12 +2,18 @@ const rec = (x, y, i, obj) => {
     if (i === 0) {
         return
     }
-        obj.moveTo(x, y)
-        obj.lineTo(x + 50, y)
-        obj.moveTo(x, y)
-        obj.lineTo(x, y + 50)
-        // rec(x + 50, y, i-1, ctx)
-        // rec(x, y + 50, i-1, ctx)
+    const randomX = Math.round(Math.random() * 100);
+    const randomX2 = Math.round(Math.random() * 100);
+
+    const randomY = Math.round(Math.random() * 100);
+    const randomY2 = Math.round(Math.random() * 100);
+
+    obj.moveTo(x, y)
+    obj.lineTo(x +randomX, y- randomY)
+    obj.moveTo(x, y)
+    obj.lineTo(x-randomX2, y - randomY2)
+    rec(x +randomX, y- randomY, i-1, ctx)
+    rec(x - randomX2, y-randomY2, i-1, ctx)
 }
 const canvasObject = document.getElementById('TestCanvas')
 const okButton = document.getElementById('okButton')
@@ -43,15 +49,21 @@ const startCoordinateTree = {
     y: canvasObject.height
 }
 
-
 okButton.addEventListener('click', (e)=>{
     ctx.moveTo(startCoordinateTree.x, startCoordinateTree.y)
-    ctx.lineTo(startCoordinateTree.x, startCoordinateTree.y - 100)
-    // rec()
+    ctx.lineTo(startCoordinateTree.x, startCoordinateTree.y - 20)
+
+    rec(startCoordinateTree.x, startCoordinateTree.y - 20, +input.value, ctx)
+
+    // ctx.moveTo(startCoordinateTree.x, startCoordinateTree.y - 20)
+    // ctx.lineTo(startCoordinateTree.x-50, startCoordinateTree.y - 200)
+    //
+    // ctx.moveTo(startCoordinateTree.x, startCoordinateTree.y - 20)
+    // ctx.lineTo(startCoordinateTree.x+50, startCoordinateTree.y - 200)
     // for (let i = 0; i<=+input.value; i++) {
     //     ctx.moveTo(i*50,i*50)
     //     ctx.lineTo((i+1)*50, (i+1)*50)
-    //     rec(i*50, i*50, i, ctx)
+    //     // rec(i*50, i*50, i, ctx)
     //         // ctx.moveTo(i*50, i*50)
     //         // ctx.lineTo((i+ 1)  *50, i*50)
     //         // ctx.moveTo(i*50, i*50)
