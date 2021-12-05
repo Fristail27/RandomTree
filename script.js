@@ -9,17 +9,29 @@ const rec = (x, y, i, obj) => {
     const randomY2 = Math.round(Math.random() * 100);
 
     if (randomX > 70) {
+        obj.beginPath()
+        obj.lineWidth = i;
         obj.moveTo(x, y)
         obj.lineTo(x +randomX, y- randomY)
+        obj.strokeStyle = 'blue'
+        obj.stroke()
         rec(x +randomX, y- randomY, i-1, ctx)
     } else if (randomX < 20) {
+        obj.beginPath()
+        obj.lineWidth = i;
         obj.moveTo(x, y)
         obj.lineTo(x +randomX, y- randomY)
+        obj.strokeStyle = 'blue'
+        obj.stroke()
     } else {
+        obj.beginPath()
+        obj.lineWidth = i;
         obj.moveTo(x, y)
         obj.lineTo(x +randomX, y- randomY)
         obj.moveTo(x, y)
         obj.lineTo(x-randomX2, y - randomY2)
+        obj.strokeStyle = 'blue'
+        obj.stroke()
         rec(x +randomX, y- randomY, i-1, ctx)
         rec(x - randomX2, y-randomY2, i-1, ctx)
     }
@@ -32,7 +44,6 @@ canvasObject.width = document.documentElement.scrollWidth
 canvasObject.height = document.documentElement.clientHeight - 200
 
 const ctx = canvasObject.getContext('2d')
-
 let mouseStatus = false
 
 const coordinate = {
@@ -59,11 +70,13 @@ const startCoordinateTree = {
 }
 
 okButton.addEventListener('click', (e)=>{
+    ctx.beginPath()
+    ctx.lineWidth = +input.value + 1;
     ctx.moveTo(startCoordinateTree.x, startCoordinateTree.y)
     ctx.lineTo(startCoordinateTree.x, startCoordinateTree.y - 20)
-    rec(startCoordinateTree.x, startCoordinateTree.y - 20, +input.value, ctx)
     ctx.strokeStyle = 'blue'
     ctx.stroke()
+    rec(startCoordinateTree.x, startCoordinateTree.y - 20, +input.value, ctx)
 })
 
 
