@@ -70,6 +70,7 @@ const startCoordinateTree = {
 }
 
 okButton.addEventListener('click', (e)=>{
+    ctx.clearRect(0, 0, canvasObject.width, canvasObject.height);
     ctx.beginPath()
     ctx.lineWidth = +input.value + 1;
     ctx.moveTo(startCoordinateTree.x, startCoordinateTree.y)
