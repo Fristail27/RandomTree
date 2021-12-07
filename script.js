@@ -7,20 +7,20 @@ const rec = (x, y, i, obj) => {
 
     const randomY = Math.round(Math.random() * 100);
     const randomY2 = Math.round(Math.random() * 100);
-
+    const randomNum = Math.random()
     if (randomX > 70) {
         obj.beginPath()
         obj.lineWidth = i;
         obj.moveTo(x, y)
-        obj.lineTo(x +randomX, y- randomY)
+        obj.lineTo(randomNum >= 0.5 ? x + randomX : x - randomX, y- randomY)
         obj.strokeStyle = 'blue'
         obj.stroke()
-        rec(x +randomX, y- randomY, i-1, ctx)
+        rec(randomNum >= 0.5 ? x + randomX : x - randomX, y- randomY, i-1, ctx)
     } else if (randomX < 20) {
         obj.beginPath()
         obj.lineWidth = i;
         obj.moveTo(x, y)
-        obj.lineTo(x +randomX, y- randomY)
+        obj.lineTo(randomNum >= 0.5 ? x + randomX : x - randomX, y- randomY)
         obj.strokeStyle = 'blue'
         obj.stroke()
     } else {
